@@ -22,6 +22,12 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt>Rating</dt>
+          <% @review = Review.find_by(:product_id => @product.id) %>
+          <dd><div>User: <%= @review.user_id %></div>
+          <div>Rating: <%= @review.rating %></div>
+          <div>Description: <%= @review.description %></div>
+          </dd>
         </dl>
       </div>
     </div>

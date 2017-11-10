@@ -132,5 +132,116 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Creating Reviews"
+
+rev1 = Product.find_by(:id => 1)
+rev2 = Product.find_by(:id => 2)
+rev3 = Product.find_by(:id => 3)
+rev4 = Product.find_by(:id => 4)
+rev5 = Product.find_by(:id => 5)
+rev6 = Product.find_by(:id => 6)
+rev7 = Product.find_by(:id => 7)
+rev8 = Product.find_by(:id => 8)
+rev9 = Product.find_by(:id => 9)
+rev10 = Product.find_by(:id => 10)
+rev11 = Product.find_by(:id => 11)
+rev12 = Product.find_by(:id => 12)
+user = [1,2,3,4,5,6,7,8,9,10].sample
+r = [1,2,3,4,5].sample
+
+
+  rev1.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev2.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev3.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev4.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev5.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev6.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev7.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev8.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev9.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev10.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev11.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
+
+  user = [1,2,3,4,5,6,7,8,9,10].sample
+  r = [1,2,3,4,5].sample
+  rev12.reviews.create!({
+    user_id: user,
+    description: Faker::Hipster.paragraph(4),
+    rating: r
+  })
 
 puts "DONE!"

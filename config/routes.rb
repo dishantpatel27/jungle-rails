@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
-  
+  post '/products/:id/reviews' => 'reviews#create', as: :product_reviews
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
