@@ -3,7 +3,9 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+  <% if cart.length == 0 %>
+  <h1>Empty Cart</h1>
+<% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -17,7 +19,8 @@
       <tbody>
         <% @cart_total = 0 %>
         <% cart.each do |product_id, details| %>
-          <%= render 'item', product_id: product_id, details: details %>
+          
+            <%= render 'item', product_id: product_id, details: details %>
         <% end %>
       </tbody>
       <tfoot>
@@ -51,3 +54,6 @@
   </div>
 
 </section>
+
+  
+<% end %> 
