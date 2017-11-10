@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    UserMailer.welcome_email(@order).deliver_later
+    
   end
 
   def create
