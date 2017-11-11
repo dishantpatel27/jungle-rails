@@ -22,15 +22,48 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
-          <dt>Rating</dt>
-          <% @review = Review.find_by(:product_id => @product.id) %>
-          <dd><div>User: <%= @review.user_id %></div>
-          <div>Rating: <%= @review.rating %></div>
-          <div>Description: <%= @review.description %></div>
-          </dd>
         </dl>
       </div>
     </div>
+    <dt>Review</dt>
+    <% @review =Review.new %>
+    <%= form_for @review ,url:product_reviews_path(params[:id]), local: true do |form| %>
+      
+       <% if @review.errors.any? %>
+         <div id="error_explanation">
+           <h2>
+             <%= pluralize(@review.errors.count, "error") %> prohibited
+             this category from being saved:
+           </h2>
+           <ul>
+             <% @review.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+             <% end %>
+           </ul>
+         </div>
+       <% end %>
+      
+       <p>
+         <%= form.label :description %><br>
+         <%= form.text_area :description %>
+       </p>
+       <p>
+       <%= form.label :rating %><br>
+       <%= form.select :rating,[0,1,2,3,4,5] %>
+       </p>
+      
+       <p>
+         <%= form.submit %>
+       </p>
+      
+     <% end %>
+    <% @review = Review.where(:product_id => @product.id) %>
+    <% @review.each do |elem| %>
+    <dd><div>User: <%= User.find(elem.user_id).first_name %></div>
+    <div>Rating: <%= elem.rating %></div>
+    <div>Description: <%= elem.description %></div>
+    </dd>
+    <%end%>
 
   </article>
 
