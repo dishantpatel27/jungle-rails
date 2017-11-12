@@ -1,17 +1,12 @@
 <section class="products-show">
-
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
-
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
-
       <div class="col-sm-8">
         <dl class="dl-horizontal">
           <dt>Name</dt>
@@ -28,71 +23,70 @@
     <dt>Review</dt>
     <% @review =Review.new %>
     <% if current_user %>
-    <%= form_for @review ,url:product_reviews_path(params[:id]), local: true do |form| %>
-      
-       <% if @review.errors.any? %>
-         <div id="error_explanation">
-           <h2>
-             <%= pluralize(@review.errors.count, "error") %> prohibited
-             this category from being saved:
-           </h2>
-           <ul>
-             <% @review.errors.full_messages.each do |msg| %>
-               <li><%= msg %></li>
-             <% end %>
-           </ul>
-         </div>
-       <% end %>
-      
-       <p>
-         <%= form.label :description %><br>
-         <%= form.text_area :description %>
-       </p>
-       <p>
-       <%= form.label :rating %><br>
-       <%= form.select :rating,[0,1,2,3,4,5] %>
-       </p>
-      
-       <p>
-         <%= form.submit %>
-       </p>
-      
-     <% end %>
-    
+    <%= form_for @review ,url:product_reviews_path(params[:id]), local: true do |form| %>  
+      <% if @review.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@review.errors.count, "error") %> prohibited
+            this category from being saved:
+          </h2>
+          <ul>
+            <% @review.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <p>
+      <div class="form-group">
+        <%= form.label :description %><br>
+        <%= form.text_area :description,class:"form-control",rows:"4" %>
+        </div>
+      </p>
+      <p>
+      <div class="form-group">        
+      <div>
+      <%= form.label :rating %><br>
+      <%= form.select :rating,[0,1,2,3,4,5],class:"btn btn-primary dropdown-toggle" %>
+      </div>
+      </div>
+      </p>
+      <p>
+        <div class="form-group">        
+          <div>
+            <%= form.submit "Submit" ,class:"btn btn-default"%>
+          </div>
+        </div>
+      </p>
+    <% end %>
     <% @review = Review.where(:product_id => @product.id).order('created_at DESC') %>
-    <% @review.each do |elem| %>
-
-      <% if current_user.first_name == User.find(elem.user_id).first_name %>
-      <%= button_to "delete", product_reviews_destroy_path(params[:id]), :method => :delete %>
-    <dd><div>User: <%= User.find(elem.user_id).first_name %></div>
-    <div>Rating: <%= elem.rating %></div>
-    <div>Description: <%= elem.description %></div>
-    </dd>
-    <% else %>
-    <dd><div>User: <%= User.find(elem.user_id).first_name %></div>
-    <div>Rating: <%= elem.rating %></div>
-    <div>Description: <%= elem.description %></div>
-    </dd>
+      <% @review.each do |elem| %>
+        <% if current_user.first_name == User.find(elem.user_id).first_name %>
+          <%= button_to "delete", product_reviews_destroy_path(params[:id]), :method => :delete %>
+          <dd>
+            <div>User: <%= User.find(elem.user_id).first_name %></div>
+            <div>Rating: <%= elem.rating %></div>
+            <div>Description: <%= elem.description %></div>
+          </dd>
+        <% else %>
+          <dd>
+            <div>User: <%= User.find(elem.user_id).first_name %></div>
+            <div>Rating: <%= elem.rating %></div>
+            <div>Description: <%= elem.description %></div>
+          </dd>
+        <%end%>
     <%end%>
-
-    <%end%>
-    
-
   </article>
-
 </section>
 <% else %>
-<% @review = Review.where(:product_id => @product.id).order('created_at DESC') %>
-<% @review.each do |elem| %>
-<dd><div>User: <%= User.find(elem.user_id).first_name %></div>
-<div>Rating: <%= elem.rating %></div>
-<div>Description: <%= elem.description %></div>
-</dd>
+  <% @review = Review.where(:product_id => @product.id).order('created_at DESC') %>
+    <% @review.each do |elem| %>
+    <dd>
+      <div>User: <%= User.find(elem.user_id).first_name %></div>
+      <div>Rating: <%= elem.rating %></div>
+      <div>Description: <%= elem.description %></div>
+    </dd>
 <%end%>
-
-</article>
-
+  </article>
 </section>
-
-
 <%end%>
