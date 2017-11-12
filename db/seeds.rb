@@ -20,6 +20,41 @@ unless Rails.env.development?
 end
 
 # Let's do this ...
+puts "Creating Users"
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 1234
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 1234
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 1234
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 1234
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 1234
+})
 
 ## CATEGORIES
 
@@ -146,100 +181,100 @@ rev9 = Product.find_by(:id => 9)
 rev10 = Product.find_by(:id => 10)
 rev11 = Product.find_by(:id => 11)
 rev12 = Product.find_by(:id => 12)
-user = [1,2,3,4,5,6,7,8,9,10].sample
+user = [1,2,3,4,5].sample
 r = [1,2,3,4,5].sample
 
 
   rev1.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev2.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev3.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev4.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev5.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev6.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev7.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev8.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev9.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev10.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev11.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })
 
-  user = [1,2,3,4,5,6,7,8,9,10].sample
+  user = [1,2,3,4,5].sample
   r = [1,2,3,4,5].sample
   rev12.reviews.create!({
-    user_id: 1,
+    user_id: user,
     description: Faker::Hipster.paragraph(4),
     rating: r
   })

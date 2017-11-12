@@ -27,6 +27,7 @@
     </div>
     <dt>Review</dt>
     <% @review =Review.new %>
+    <% if current_user %>
     <%= form_for @review ,url:product_reviews_path(params[:id]), local: true do |form| %>
       
        <% if @review.errors.any? %>
@@ -57,14 +58,41 @@
        </p>
       
      <% end %>
-    <% @review = Review.where(:product_id => @product.id) %>
+    
+    <% @review = Review.where(:product_id => @product.id).order('created_at DESC') %>
     <% @review.each do |elem| %>
+
+      <% if current_user.first_name == User.find(elem.user_id).first_name %>
+      <%= button_to "delete", product_reviews_destroy_path(params[:id]), :method => :delete %>
+    <dd><div>User: <%= User.find(elem.user_id).first_name %></div>
+    <div>Rating: <%= elem.rating %></div>
+    <div>Description: <%= elem.description %></div>
+    </dd>
+    <% else %>
     <dd><div>User: <%= User.find(elem.user_id).first_name %></div>
     <div>Rating: <%= elem.rating %></div>
     <div>Description: <%= elem.description %></div>
     </dd>
     <%end%>
 
+    <%end%>
+    
+
   </article>
 
 </section>
+<% else %>
+<% @review = Review.where(:product_id => @product.id).order('created_at DESC') %>
+<% @review.each do |elem| %>
+<dd><div>User: <%= User.find(elem.user_id).first_name %></div>
+<div>Rating: <%= elem.rating %></div>
+<div>Description: <%= elem.description %></div>
+</dd>
+<%end%>
+
+</article>
+
+</section>
+
+
+<%end%>
